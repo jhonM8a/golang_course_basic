@@ -3,40 +3,25 @@ package main //Indica la carpeta donde esta, pero como no hay ponemos el main
 import "fmt" //	Libreria para imprimir
 
 func main() {
-	// Area de un cuadrado
-	const baseCuadrado = 10
-	areaCuadrado := baseCuadrado * baseCuadrado // Go asigna el tipo de esta manera
-	fmt.Println("Area cuadrado:", areaCuadrado)
+	// Declaración de variables
+	helloMessage := "Hello"
+	worldMessage := "world"
 
-	x := 10
-	y := 50
+	// Println
+	fmt.Println(helloMessage, worldMessage)
 
-	// Suma
-	result := x + y // La variable no ha sido definida
-	fmt.Println("Suma:", result)
+	//Printf
+	nombre := "platzi"
+	cursos := 500
+	fmt.Printf("%s tiene más de %d cursos\n", nombre, cursos)
+	fmt.Printf("%v tiene más de %d cursos\n", nombre, cursos) // %v cuando no sabemos el tipo de dato
 
-	// Resta
-	result = y - x
-	fmt.Println("Resta:", result)
+	//Sprintf
+	message := fmt.Sprintf("%s tiene más de %d cursos", nombre, cursos) // Guarda el resultado en un string
+	fmt.Println(message)
 
-	// Multiplicación
-	result = x * y
-	fmt.Println("Multiplicación:", result)
-
-	//División
-	result = y * x
-	fmt.Println("División:", result)
-
-	// Modulo
-	result = y % x
-	fmt.Println("Modulo:", result)
-
-	//Incremental
-	x++
-	fmt.Println("Incremental:", x)
-
-	//Decremental
-	x--
-	fmt.Println("Decremental:", x)
+	//Tipos de datos
+	fmt.Printf("helloMessage: %T\n", helloMessage)
+	fmt.Printf("cursos: %T\n", cursos)
 
 }
