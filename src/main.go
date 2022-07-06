@@ -2,26 +2,28 @@ package main //Indica la carpeta donde esta, pero como no hay ponemos el main
 
 import "fmt" //	Libreria para imprimir
 
-func main() {
-	// Declaración de variables
-	helloMessage := "Hello"
-	worldMessage := "world"
-
-	// Println
-	fmt.Println(helloMessage, worldMessage)
-
-	//Printf
-	nombre := "platzi"
-	cursos := 500
-	fmt.Printf("%s tiene más de %d cursos\n", nombre, cursos)
-	fmt.Printf("%v tiene más de %d cursos\n", nombre, cursos) // %v cuando no sabemos el tipo de dato
-
-	//Sprintf
-	message := fmt.Sprintf("%s tiene más de %d cursos", nombre, cursos) // Guarda el resultado en un string
+func normalFunction(message string) {
 	fmt.Println(message)
+}
 
-	//Tipos de datos
-	fmt.Printf("helloMessage: %T\n", helloMessage)
-	fmt.Printf("cursos: %T\n", cursos)
+func tripleArgument(a int, b int, c string) {
+	fmt.Println(a, b, c)
+}
+
+func returnValue(a int) int {
+	return a * 2
+}
+
+func doubleReturn(a int) (c, d int) {
+	return a, a * 2
+}
+
+func main() {
+	normalFunction("Hola mundo")
+	tripleArgument(1, 2, "Jhon")
+	value := returnValue(3)
+	fmt.Println("value: ", value)
+	value1, value2 := doubleReturn(2) // usando _ le decimos a go que no nos interesa la variable que se retorna
+	fmt.Println("value1, value2: ", value1, value2)
 
 }
