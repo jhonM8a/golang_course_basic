@@ -4,22 +4,24 @@ import "fmt"
 //	Libreria para imprimir
 
 func main() {
-	//switch como se encuentra generalmente
-	switch modulo := 4 % 2; modulo {
-	case 0:
-		fmt.Println("Par")
-	default:
-		fmt.Println("impar")
+	// Defer
+	defer fmt.Println("Hola") // Antes de morir el código va ejecutar esta línea es como un finally en java
+	fmt.Println("Mundo")
+
+	// Continue se usa cuando algo nos interese que continue, por ejemplo cuando ocurre un error pero tu quieres seguir con el ciclo
+	for i := 0; i < 10; i++ {
+		fmt.Println(i)
+		if i == 2 {
+			fmt.Println("Es 2")
+			continue
+		}
+
+		// Break
+		if i == 8 {
+			fmt.Println("Es 8")
+			break
+
+		}
 	}
 
-	//switch sin condición
-	value := 200
-	switch {
-	case value > 100:
-		fmt.Println("Menor a 100")
-	case value < 0:
-		fmt.Println("Menor a 0")
-	default:
-		fmt.Println("Sin condición")
-	}
 }
