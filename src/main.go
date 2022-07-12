@@ -1,25 +1,38 @@
 package main //Indica la carpeta donde esta, pero como no hay ponemos el main
-import (
-	pk "curso_golang_platzi/src/mypackage" // El pk es un alias
-	"fmt"
-)
+import "fmt"
+
+type pc struct {
+	ram   int
+	disk  int
+	brand string
+}
+
+func (myPc pc) ping() { // De esta manera podemos añadirle funciones a nuestro struc
+	fmt.Println(myPc.brand, "pong")
+}
+
+func (myPc *pc) duplicateRam() { // Se añade la función al struct y además accedmos al valor del struct que esta la posición de memoria
+	myPc.ram = myPc.ram * 2
+}
 
 func main() {
-	var myCar pk.CarPublic // Si el estruct empieza con mayuscula es publico en minuscula privado
-	myCar.Brand = "Ferrai"
-	myCar.Year = 2022
-	fmt.Println(myCar)
+	a := 50
+	b := &a // & accedemos a la posicíon de memoria de la variable a
 
-	/*
-		Como el struct empieza con minuscula es privado
-		var myOtherCar pk.carPrivate
-		fmt.Println(carPrivate)
-	*/
+	fmt.Println(a, b)
+	fmt.Println(a, *b) // El * es para acceder al valor de la variable que se encuentra en memoria
 
-	pk.PrintMessage() //Como comienza con Mayuscula la función es publica
-	/*
-		A tener en cuenta, si sale el error "is not in GOROOT" con el comando "go mod init" se puede
-		solucionar
+	*b = 100       // Se modifca la posición de memoria que es la misma para a y b
+	fmt.Println(a) // Al imprimir a queda con otro valor a pesar de que no modificamos directamente la variable pero si la posición de memoria
 
-	*/
+	myPc := pc{ram: 16, disk: 200, brand: "msi"}
+	fmt.Println(myPc)
+
+	myPc.ping()
+
+	fmt.Println(myPc)
+
+	myPc.duplicateRam()
+	fmt.Println(myPc)
+
 }
