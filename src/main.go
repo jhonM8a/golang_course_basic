@@ -1,22 +1,39 @@
 package main //Indica la carpeta donde esta, pero como no hay ponemos el main
 import "fmt"
 
-type pc struct {
-	ram   int
-	disk  int
-	brand string
+type figura2D interface {
+	area() float64
 }
 
-/**
-La estructura de datos " Struct " tiene un método llamado " String " , que podemos sobrescribir para personalizar la salida a consola de los datos del struct.
-
-*/
-func (myPc pc) String() string {
-	return fmt.Sprintf("Tengo %d GB RAM, %D GB Disco y es una %s", myPc.ram, myPc.disk, myPc.brand)
-
+type cuadrado struct {
+	base float64
 }
+
+type rectangulo struct {
+	base   float64
+	altura float64
+}
+
+func (c cuadrado) area() float64 {
+	return c.base * c.base
+}
+
+func (r rectangulo) area() float64 {
+	return r.base * r.altura
+}
+
+func calcular(f figura2D) {
+	fmt.Println("Area: ", f.area())
+}
+
 func main() {
-	myPc := pc{ram: 16, disk: 100, brand: "msi"}
+	myCuadrado := cuadrado{base: 2}
+	myRectangulo := rectangulo{base: 4, altura: 4}
 
-	fmt.Println(myPc)
+	calcular(myCuadrado)
+	calcular(myRectangulo)
+
+	// Lista interfaces
+	myInterface := []interface{}{"hola", 12, 4.9}
+	fmt.Println(myInterface...)
 }
