@@ -1,39 +1,27 @@
 package main //Indica la carpeta donde esta, pero como no hay ponemos el main
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
-type figura2D interface {
-	area() float64
+func say(text string) {
+	fmt.Println(text)
 }
 
-type cuadrado struct {
-	base float64
-}
+func main() { //La función main corre en una goruntime
 
-type rectangulo struct {
-	base   float64
-	altura float64
-}
+	say("Hello")
+	/*
+		Con la palabra go indica que la función corre en una gorutime, es decir de manera cocurrente.
+		Que va a pasar, se va a imprimir la palabra Hello pero el World no. Esto, debido a que
+		el main acaba su ejecución y mure la gorutime, El World se ejecuta en otro hilo diferente
+		al del main.
+	*/
+	go say("World")
 
-func (c cuadrado) area() float64 {
-	return c.base * c.base
-}
+	/*
+		De esta manera se puede hacer que se imprima el world en el mismo hiilo del main, pero no es recomendable
+	*/
+	time.Sleep(time.Second * 1)
 
-func (r rectangulo) area() float64 {
-	return r.base * r.altura
-}
-
-func calcular(f figura2D) {
-	fmt.Println("Area: ", f.area())
-}
-
-func main() {
-	myCuadrado := cuadrado{base: 2}
-	myRectangulo := rectangulo{base: 4, altura: 4}
-
-	calcular(myCuadrado)
-	calcular(myRectangulo)
-
-	// Lista interfaces
-	myInterface := []interface{}{"hola", 12, 4.9}
-	fmt.Println(myInterface...)
 }
