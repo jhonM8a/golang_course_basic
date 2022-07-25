@@ -1,3 +1,2 @@
 # golang_course_basic
-It's only to learn go. Please chek de commits, here it's every single class
-
+It's just to learn how to go. Please, check the commits there are all the classes there
